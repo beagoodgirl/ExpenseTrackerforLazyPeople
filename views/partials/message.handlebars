@@ -1,0 +1,36 @@
+{{#if (checkIsLogin title)}}
+    {{#if not_login_warning}}
+        <div class="alert alert-dismissible alert-warning py-0 d-flex align-items-center">
+            <button type="button" class="btn-close pt-0 mt-0 pb-2" data-bs-dismiss="alert"></button>
+            <p class="my-0 py-0">{{not_login_warning}}</p> 
+        </div>
+    {{/if}}
+    {{#if login_error}}
+        <div class="alert alert-dismissible alert-danger py-0 d-flex align-items-center">
+            <button type="button" class="btn-close pt-0 mt-0 pb-2" data-bs-dismiss="alert"></button>
+            <p class="my-0 py-0">{{login_error}}</p> 
+        </div>
+    {{/if}}
+    {{#if register_success}}
+        <div class="alert alert-dismissible alert-success py-0 d-flex align-items-center">
+            <button type="button" class="btn-close pt-0 mt-0 pb-2" data-bs-dismiss="alert"></button>
+            <p class="my-0 py-0">{{register_success}}</p> 
+        </div>
+    {{/if}}
+    {{#if logout_success}}
+        <div class="alert alert-dismissible alert-success py-0 d-flex align-items-center">
+            <button type="button" class="btn-close pt-0 mt-0 pb-2" data-bs-dismiss="alert"></button>
+            <p class="my-0 py-0">{{logout_success}}</p> 
+        </div>
+    {{/if}}
+{{/if}}
+{{#if (checkIsRegister title)}}
+    {{#if register_errors}}
+        {{#each register_errors}}
+        <div class="alert alert-dismissible alert-danger py-0 d-flex align-items-center">
+            <button type="button" class="btn-close pt-0 mt-0 pb-2" data-bs-dismiss="alert"></button>
+            <p class="my-0 py-0">{{this}}</p> 
+        </div>
+        {{/each}}
+    {{/if}}
+{{/if}}

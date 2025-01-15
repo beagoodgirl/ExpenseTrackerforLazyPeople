@@ -1,0 +1,59 @@
+[
+    {
+        "_id":1,
+        "name":"家居物業",
+        "icon":"<i class=\"fa-solid fa-house\"></i>",
+        "isFixed":false,
+        "AlertDate":""
+    },
+    {   
+        "_id":2,
+        "name":"交通出行",
+        "icon":"<i class=\"fa-solid fa-van-shuttle\"></i>",
+        "isFixed":false,
+        "AlertDate":""
+    },
+    {
+        "_id":3,
+        "name":"休閒娛樂",
+        "icon":"<i class=\"fa-solid fa-face-grin-beam\"></i>",
+        "isFixed":false,
+        "AlertDate":""
+    },
+    {
+        "_id":4,
+        "name":"餐飲食品",
+        "icon":"<i class=\"fa-solid fa-utensils\"></i>",
+        "isFixed":false,
+        "AlertDate":""
+    },
+    {
+        "_id":5,
+        "name":"其他",
+        "icon":"<i class=\"fa-solid fa-pen\"></i>",
+        "isFixed":false,
+        "AlertDate":""
+    },
+    {
+        "_id":6,
+        "name":"水費",
+        "icon":"<i class=\"fa-solid fa-droplet\"></i>",
+        "isFixed":true,
+        "AlertDate":""
+        
+    },
+    {
+        "_id":7,
+        "name":"電費", 
+        "icon":"<i class=\"fa-solid fa-bolt\"></i>",
+        "isFixed":true,
+        "AlertDate":""
+    },
+    {
+        "_id":8,
+        "name":"電信費",
+        "icon":"<i class=\"fa-solid fa-square-phone\"></i>",
+        "isFixed":true,
+        "AlertDate":""
+    }
+]

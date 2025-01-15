@@ -1,0 +1,30 @@
+.form-container{
+    max-width: 600px;
+    min-height: 90vh;
+    padding: 2rem;
+}
+label {
+    margin-top: 1.5rem;
+}
+
+.was-validated .form-group:first-child label{
+    margin-top: 1.5rem;
+}
+.was-validated label{
+    margin-top: 0;
+}
+
+.big-btn-div {
+    margin-top: 3rem;
+}
+
+.was-validated .big-btn-div{
+    margin-top: 1.3rem;
+}
+
+/*收據預覽限制*/
+.image-preview img {
+    max-width: 14cm;
+    justify-content: center;
+    height: auto;
+}

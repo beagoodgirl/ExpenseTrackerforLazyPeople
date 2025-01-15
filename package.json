@@ -1,0 +1,42 @@
+{
+  "name": "expense-tracker",
+  "version": "1.0.0",
+  "description": "an accounting book allow user to keep track of their money usage ",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --no-warnings app.js",
+    "dev": "nodemon app.js",
+    "seed": "node --no-warnings ./models/seeds/categorySeeder.js && node --no-warnings ./models/seeds/recordSeeder.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TinyMurky/expense-tracker.git"
+  },
+  "author": "TinyMurky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TinyMurky/expense-tracker/issues"
+  },
+  "homepage": "https://github.com/TinyMurky/expense-tracker#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.7",
+    "express-session": "^1.17.3",
+    "handlebars": "^4.7.8",
+    "method-override": "^3.0.0",
+    "mongodb": "^6.6.1",
+    "mongoose": "^8.3.5",
+    "nanoid": "^4.0.2",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.9.13",
+    "passport": "^0.6.0",
+    "passport-github2": "^0.1.12",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0"
+  }
+}

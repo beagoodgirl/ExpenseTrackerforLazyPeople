@@ -1,0 +1,57 @@
+<!-- is-valid is-invalid-->
+
+<div class="form-container container">
+    {{> error}}
+    <form action="/entries" method="POST" novalidate>
+        <div class="form-group has-success has-danger">
+            <label class="form-label" for="name">支出名稱</label>
+            <input type="text" value="" placeholder="ex:午餐" class="form-control" name="name" id="name" required>
+            <div class="valid-feedback">您做得很棒！</div>
+            <div class="invalid-feedback">支出名稱為必填欄位</div>
+        </div>
+        <div class="form-group has-success has-danger">
+            <label class="form-label" for="date">日期(今天以前)</label>
+            <input type="date" value="" placeholder="" class="form-control" name="date" id="date" required>
+            <div class="valid-feedback">您做得很棒！</div>
+            <div class="invalid-feedback">日期為必填欄位, 且不可超過今天</div>
+        </div>
+        <div class="form-group">
+            <label for="categoryID" class="form-label">類別</label>
+            <select class="form-select" value="" id="categoryID" name="categoryID" required>
+                <option value="" disabled selected hidden>請選擇支出類別</option>
+                {{#each categories}}
+                {{#unless this.isFixed}}
+                <option value="{{this._id}}">{{this.name}}</option>
+                {{/unless}}
+                {{/each}}
+            </select>
+            <div class="valid-feedback">您做得很棒！</div>
+            <div class="invalid-feedback">請選擇支出類別</div>
+        </div>
+        <div class="form-group has-success has-danger">
+            <label class="form-label" for="amount">金額</label>
+            <input type="number" value="" placeholder="$0" class="form-control" name="amount" id="amount"
+                inputmode="numeric" required>
+            <div class="valid-feedback">您做得很棒</div>
+            <div class="invalid-feedback">金額為必填欄位，且須填入數字</div>
+        </div>
+        <!--上傳收據-->
+        <div class="image-upload">
+            <label class="form-label" for="image">上傳收據：</label>
+            <input type="file" id="image" name="recipt_image" accept="image/*">
+            <!--收據預覽-->
+            <div class="image-preview">
+                <img id="preview-image" src="#" alt="Image Preview">
+            </div>
+        </div>
+        <div class="big-btn-div d-grid gap-2">
+            <button type="submit" class="btn btn-primary" id="submit-btn">新增支出</button>
+        </div>
+        <!--辨識圖片文字-->
+        <div class="big-btn-div d-grid gap-2">
+            <button type="button" class="btn btn-primary" id="submit_Receipt_btn" onclick="generate()">辨識圖片</button>
+        </div>
+    </form>
+    <div id="output">
+    </div>
+</div>

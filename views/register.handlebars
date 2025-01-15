@@ -1,0 +1,36 @@
+<div class="container main-container">
+    <div class="card rounded-5">
+      <div class="row">
+        <div class="input-area d-flex flex-column align-items-center justify-content-center col-12 col-md-7 ">
+          <div class="upper-iconbox d-flex flex-column align-items-center mt-3">
+            <div class="main-icon-wrapper">
+                <i class="main-icon fa-solid fa-book fa-xl"></i>
+            </div>
+            <h1 class="router-name">註冊帳號</h1>
+          </div>
+          <form action="/users/register" method="POST" class="login-form d-flex flex-column">
+            <label for="name">您的名字</label>
+            <input type="text" id="name" name="name" class="mb-1" value="{{name}}" required>
+            <label for="email">Email信箱</label>
+            <input type="email" id="email" name="email" class="mb-1" value="{{email}}" required>
+            <label for="password">密碼</label>
+            <input type="password" id="password" name="password" class="mb-1" value="{{password}}" required>
+            <label for="confirmPassword">請再輸入一次密碼</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" class="mb-1" value="{{confirmPassword}}" required>
+            <button type="submit" class="btn btn-custom btn-custom-cover"><h4>送出</h4></button>
+          </form>
+          <div class="other-login mb-5 d-flex flex-column">
+            <a href="/users/login" class="d-flex mt-1 btn btn-custom btn-custom-cover mx-0 mb-3"><h4>前往登入畫面</h4></a>
+            {{>message}}
+            <p class="hollow-strike"><span class="strike-content">使用第三方登入</span></p>
+            <div class="login-icon d-flex justify-content-center">
+              <a href="/auth/google"><i class="fa-brands fa-google fa-xl"></i></a>
+              <a href="/auth/github"><i class="fa-brands fa-github fa-xl"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="picture-area col-0 col-md-5">
+        </div>
+      </div>
+    </div>
+</div>

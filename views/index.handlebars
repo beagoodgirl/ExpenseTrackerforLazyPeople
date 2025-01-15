@@ -1,0 +1,118 @@
+<div class="main-container container">
+    <div class="container class-dropdown d-flex justify-content-between align-items-center">
+        <div class="dropdown">
+            <button class="btn btn-major dropdown-toggle rounded-pill rounded-start" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                category
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/entries"><i class="fa-solid fa-circle-dollar-to-slot"></i>  全部</a></li>
+                <!--主畫面的cayegory下拉menu是從db中的資料決定的-->
+                {{#each categories}}
+                    <li><a class="dropdown-item" href="/entries/{{this._id}}">{{{this.icon}}} {{this.name}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
+        <button type="button" class="new-btn btn btn-outline-primary btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModal">+</button>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">設定固定支出的通知日期</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Add your form elements here -->
+                <!-- 建立選擇固定支出的下拉式選單 -->
+                <label for="categoryID" class="form-label">固定支出類別</label>
+                <select class="form-select" id="categoryID" name="categoryID" required>
+                    <option value="" disabled selected hidden>請選擇支出類別</option>
+                    {{#each categories}}
+                        {{#if this.isFixed}}
+                            <option value="{{this._id}}">{{this.name}}</option>
+                        {{/if}}
+                    {{/each}}
+                </select>
+                <div class="invalid-feedback">請選擇固定支出類別</div>
+                <!-- 建立選擇固定支出的下拉式選單 -->
+                <!-- 建立選擇日期的選單-->
+                <label for="date" class="form-label">日期</label>
+                <select class="form-select" id="date"></select>
+                <script>
+                    // 定义一个包含数字的数组
+                    const numbersArray = [1, 2, 3, 4, 5, 6, 7, 8, 9 ,10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
+
+                    // 获取选择框的引用
+                    const dropdown = document.getElementById('date');
+
+                    // 遍历数组并为每个元素创建一个选项
+                    numbersArray.forEach(function(number) {
+                        const newOption = document.createElement('option');
+                        newOption.value = number; // 设置值为数字
+                        newOption.text = number;  // 设置文本为数字
+                        dropdown.add(newOption);
+                    });
+
+                    // 添加事件监听器以处理选项更改
+                    dropdown.addEventListener('change', function() {
+                        const selectedOption = this.value;
+                        console.log('Selected option:', selectedOption);
+                        // 根据选中的值执行其他操作
+                    });
+                </script>
+                <div class="invalid-feedback">請選擇日期</div>
+                <!-- 建立選擇日期的選單-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="saveAlertDate()">Save</button>
+                
+            </div>
+            </div>
+        </div>
+        </div>
+        <!-- Modal -->
+    <div class="container money-display d-flex flex-column justify-content-center align-items-center">
+        <h6 class="text-body-secondary">{{#if categoryID}}{{matchCategoryName categoryID categories}}{{else}}總消費{{/if}}</h2>
+        <div class="main-money-container d-flex">
+            <h5 class="text-body-secondary main-dollar-sign">$</h3>
+            <h1 class="number main-number py-0">{{totalSpend}}</h1>
+        </div>
+    </div>
+    <!--error display area-->
+    {{> error}}
+    <!---------------------->
+    <div class="container entries-display">
+        <div class="table-wrapper table-responsive">
+            <table class="entries-table table table-hover table-sm align-middle">
+                <tbody>
+                    {{#each entries}}
+                    <tr class="entry">
+                        <th scope="row">{{{matchIcon this ../categories}}}</i></th>
+                        <td>
+                            <div>
+                                <h5 class="m-0 p-0">{{this.name}}</h5>
+                                <p class="m-0 p-0 create-time">{{this.date}}</p>
+                            </div>
+                        </td>
+                        <td>$<spam class="number">{{this.amount}}</spam></td>
+                        <td>
+                                <form action="/entries/{{this._id}}?_method=DELETE" method="post" class="d-flex flex-row align-items-end justify-content-end flex-wrap ">
+                                    <a href="/entries/{{this._id}}/edit" class="btn btn-link btn-sm m-0 p-0 pe-2 link-underline link-underline-opacity-0">edit</a>
+                                    <button type="submit" class="btn btn-link btn-sm m-0 p-0 link-underline link-underline-opacity-0">delete</button>
+                                </form>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="big-btn-div d-flex justify-content-center">
+        <a href="/entries/new" class="btn btn-outline-primary btn-sm  ugly-new ">新增支出</a>
+        <a href="/entries/new_fixed" class="btn btn-outline-primary btn-sm ugly-new">新增固定支出</a>
+    </div>
+</div>
